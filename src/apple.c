@@ -5,10 +5,10 @@ int k;
 int A[100000];
 
 int p(int x){
-    int l, j, y;
+    int l, i, y;
     l = 0;
-    for(j=0; j < n; j++){
-        l = ((A[j] + x - 1) / x) + l;
+    for(i=0; i < n; i++){
+        l = ((A[i] + x - 1) / x) + l;
     }
     if(l <= k) y = 1;
     else y = 0;
