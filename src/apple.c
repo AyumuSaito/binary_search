@@ -5,7 +5,7 @@ int k;
 int A[100000];
 
 int canBeIn(int x){
-    int l, i, y;
+    int l, i;
     l = 0;
     for(i=0; i < n; i++){
         l = ((A[i] + x - 1) / x) + l;
@@ -18,7 +18,7 @@ int main(){
   int i, lb, ub;
   scanf("%d%d", &n, &k);
     lb = 0;
-    ub = 10000;
+    ub = 1000000000;
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
