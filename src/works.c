@@ -7,38 +7,58 @@ int B[100000];
 
 int between(int x, int y, int A[]){
     int i, l;
-    for(i=x-1; i < y; i++){
+    for(i=x; i < y; i++){
         l = A[i] + l;
     }
     return l;
 }
 
-int canBeIn(int x){
-    int l, i, s;
-    l = between(1,x,A);
-    s = between(1,n,A);
-    if(s / k <= l) return (1);
+int canCut(int x, int A[]){
+    int l, i, r;
+    l = 0;
+    r = 0;
+    for(i=0; i < x; i++){
+        l = A[i] + l;
+    }
+    for(i=x; i < n; i++){
+        r = A[i] + r;
+    }
+    if(l > (r / (k-1))) return (1);
     else return (0);
 }
 
 
 int main(){
-    int i, lb, ub, a;
+    int i, lb, ub, a, b;
     scanf("%d%d", &n, &k);
-    lb = 1;
+    lb = 0;
     ub = n;
     for(i = 0; i < n; i++){
         scanf("%d", &A[i]);
     }
-    B[0] = A[0];
-    for(i=0; i < n; i++){
-        B[i+1] = B[i] + A[i+1];
+    while(k >= 2){
+        b = 0;
+        for(i=lb; i < n-lb; i++){
+            B[i-lb] = A[i];
+        }
+        while(ub - lb > 1){
+            int m = (ub + lb) / 2;
+            if(canCut(m,B)) ub = m;
+            else lb = m;
+        }
+        for(i=0; i < lb; i++){
+            b = B[i] + b;
+        }
+        if(a > b) a = a;
+        else a = b;
+        k = k - 1;
     }
-    while(ub - lb > 1){
-        int m = (ub + lb) / 2;
-        if(canBeIn(m)) ub = m;
-        else lb = m;
+    b = 0;
+    for(i=lb; i < n; i++){
+        b = B[i] + b;
     }
-    printf("%d\n",B[4]);
+    if(a > b) a = a;
+    else a = b;
+    printf("%d\n",a);
     return 0;
 }
