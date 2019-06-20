@@ -38,7 +38,7 @@ int main(){
     }
     while(k >= 2){
         b = 0;
-        for(i=lb; i < n-lb; i++){
+        for(i=lb; i < n; i++){
             B[i-lb] = A[i];
         }
         while(ub - lb > 1){
