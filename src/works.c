@@ -5,25 +5,22 @@ int k;
 int A[100000];
 int B[100000];
 
-int between(int x, int y, int A[]){
-    int i, l;
-    for(i=x; i < y; i++){
-        l = A[i] + l;
-    }
-    return l;
+int abs(int x){
+    if(x < 0) return (-x);
+    else return (x);
 }
 
 int canCut(int x, int A[]){
-    int l, i, r;
+    int l, i, s;
     l = 0;
-    r = 0;
+    s = 0;
     for(i=0; i < x; i++){
         l = A[i] + l;
     }
-    for(i=x; i < n; i++){
-        r = A[i] + r;
+    for(i=0; i < n; i++){
+        s = A[i] + s;
     }
-    if(l > (r / (k-1))) return (1);
+    if(l * k > s) return (1);
     else return (0);
 }
 
@@ -46,6 +43,8 @@ int main(){
             if(canCut(m,B)) ub = m;
             else lb = m;
         }
+        if(abs(sum(B,lb+1) - B[lb] * k) > abs(sum(B,lb) - B[lb-1] * k))) lb = lb - 1;
+        else lb = lb;
         for(i=0; i < lb; i++){
             b = B[i] + b;
         }
