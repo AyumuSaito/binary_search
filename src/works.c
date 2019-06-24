@@ -63,9 +63,9 @@ int main(){
         }
         else{
             if(abs(sum - b * k) > abs(sum - (b + B[lb]) * k)){
-            b = b + B[lb];
-            lb = lb + 1;
-        }
+                b = b + B[lb];
+                lb = lb + 1;
+            }
         }
         if(a < b) a = b;
         k = k - 1;
