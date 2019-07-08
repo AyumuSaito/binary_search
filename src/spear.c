@@ -19,7 +19,7 @@ int main(){
     int i, lb, ub;
     scanf("%d%d", &n, &k);
     lb = 0;
-    ub = 1000000000;
+    ub = 1000000001;
     for(i = 0; i < n; i++){
         scanf("%d", &A[i]);
     }
